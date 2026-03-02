@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* resposive design */
+@media (max-width: 640px) {
+  html {
+    
+    font-size: 14px; 
+  }
+}
+
+@media (max-width: 380px) {
+  html {
+    
+    font-size: 13px; 
+  }
+}
+
+@media (max-width: 280px) {
+  html {
+    font-size: 8px; 
+  }
+}
+
+/* scrollbar */
+@import "tailwindcss";
+
+@utility scrollbar-yt {
+  
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+ 
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--color-gray-500), transparent 50%);
+    border-radius: 20px;
+    
+    border: 2px solid #0f0f0f; 
+  }
+
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-gray-400);
+  }
+
+  
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-500) transparent;
+}
+
+/* svg stroke color */
+svg {
+  @apply text-zinc-100; 
+  stroke: currentColor; 
+}
+
+/* Changing the color of cross in the search bar */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1.5em;
+  width: 1.5em;
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* ---------------Colors----------- */
+/* Element,Hex Code,Tailwind Equivalent
+Background,#0f0f0f,bg-zinc-950 (or custom #0f0f0f)
+Button (Default),#272727,bg-zinc-800
+Button (Hover),#3f3f3f,bg-zinc-700
+Text (Primary),#f1f1f1,text-zinc-100
+Text (Secondary/Icons),#aaaaaa,text-zinc-400 */
