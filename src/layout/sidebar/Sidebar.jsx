@@ -28,7 +28,7 @@ const Sidebar = () => {
                 <div
                     onClick={close}
                     className="lg:hidden fixed inset-0 z-999
-                    bg-secondary-dark opacity-50"
+                    bg-black opacity-50"
                 ></div>
             )}
             {/* big sidebar section */}
