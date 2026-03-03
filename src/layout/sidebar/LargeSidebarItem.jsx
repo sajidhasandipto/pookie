@@ -1,10 +1,11 @@
 import { twMerge } from "tailwind-merge";
 import { buttonStyle } from "../../components/buttonStyle";
 
-function LargeSidebarItem({ Icon, title, url, isActive = false }) {
+function LargeSidebarItem({ Icon, title, url, onClick, isActive = false }) {
     if (!Icon) return null
     return (
         <a
+            onClick={onClick}
             href={url}
             className={twMerge(buttonStyle({ variant: 'ghost' }),
                 `w-full flex items-center rounded-lg gap-4 p-3
