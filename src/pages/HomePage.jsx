@@ -9,7 +9,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 
 const HomePage = () => {
-  const [videos, setVideos] = useState([]);
+  
 
   // catagories fetiching and catagories selection
   const [categories, setCategories] = useState([]);
@@ -33,6 +33,8 @@ const HomePage = () => {
     fetchCategories();
   }, []);
 
+  // fetch for video data
+  const [videos, setVideos] = useState([]);
   useEffect(() => {
     const loadData = async () => {
       const data = await getHomepageData();
