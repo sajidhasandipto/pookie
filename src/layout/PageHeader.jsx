@@ -15,7 +15,7 @@ const PageHeader = () => {
   }, [showFullSearchBar])
 
   return (
-    <div className={`flex lg:gap-15 gap-2 justify-between py-2`}>
+    <div className={`flex lg:gap-15 gap-2 justify-between py-2 pb-3`}>
       {/* First section for menu button and logo */}
       <PageHeaderFirstSection showFullSearchBar={showFullSearchBar} />
 

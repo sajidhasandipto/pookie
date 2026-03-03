@@ -10,6 +10,11 @@ export const buttonStyle = cva(['hover:bg-zinc-700', 'transition-colors'], {
             ghost: [
                 'hover:bg-zinc-800/50',
                 'text-zinc-100'
+            ],
+            dark: [
+                'bg-zinc-200',
+                'hover:bg-zinc-400',
+                'text-zinc-800'
             ]
         },
         size: {
