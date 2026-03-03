@@ -53,11 +53,11 @@ const HomePage = () => {
           <div className='overflow-y-auto grow scrollbar-yt overflow-x-hidden text-white'>
             <Sidebar />
           </div>
-          <div  className='overflow-x-hidden px-8 pb-4'>
+          <div  className='overflow-x-hidden scrollbar-yt px-8 pb-4'>
             <div className='sticky top-0 bg-zinc-950 z-10 pb-4'>
               <CatagoryPills categories={categories} selectedCategory={selectedCategory} onSelect={setSelectedCategory} />
             </div>
-            <div className='overflow-y-auto scrollbar-yt grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'>
+            <div className='overflow-y-auto  grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'>
               {videos && videos.map(video => (
                 <VideoGridItem key={video.title} {...video} />
               ))}
