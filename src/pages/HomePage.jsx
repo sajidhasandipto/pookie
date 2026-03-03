@@ -59,7 +59,9 @@ const HomePage = () => {
             </div>
             <div className='overflow-y-auto  grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'>
               {videos && videos.map(video => (
-                <VideoGridItem key={video.title} {...video} />
+                (video.thumbnailUrl && video.channelAvatar) ?
+                (<VideoGridItem key={video.title} {...video} />)
+                : null
               ))}
             </div>
           </div>
