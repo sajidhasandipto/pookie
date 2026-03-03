@@ -34,7 +34,7 @@ const Sidebar = () => {
             <aside className={`w-56 lg:sticky absolute top-0 
             overflow-y-auto scrollbar-yt
             py-4 flex-col gap-2 px-2 bg-zinc-950 
-            max-h-screen
+            h-full
                 ${isLargeOpen ?
                     'lg:flex' : 'lg:hidden'}
                 ${isSmallOpen ?
