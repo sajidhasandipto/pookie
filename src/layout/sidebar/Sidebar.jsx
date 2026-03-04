@@ -9,7 +9,7 @@ import { useState } from "react"
 const Sidebar = ({defaultActiveChoice='Home'}) => {
 
     const { isLargeOpen, isSmallOpen, close } = useSidebarContext()
-    const [ largeSectionChoiceActive, setLargeSectionChoiceActive ] = useState(defaultActiveChoice);
+    const [ sectionChoiceActivation, setSectionChoiceActivation ] = useState(defaultActiveChoice);
 
     return (
         <>  
@@ -17,33 +17,34 @@ const Sidebar = ({defaultActiveChoice='Home'}) => {
             <aside className={`sticky top-0 overflow-y-auto 
     scrollbar-hidden pb-4 flex-col ml-1 hidden ${isLargeOpen ? 'lg:hidden' : 'lg:flex'
                 }`}>
+                
                 <SmallSidebarItem 
                     Icon={Home} 
                     title='Home' 
                     url='/' 
-                    onClick={()=> setLargeSectionChoiceActive('Home')} 
-                    isActive={largeSectionChoiceActive==='Home'} 
+                    onClick={()=> setSectionChoiceActivation('Home')} 
+                    isActive={sectionChoiceActivation==='Home'} 
                     />
                 <SmallSidebarItem 
                     Icon={Play}
                     title='Shorts' 
                     url='/shorts'
-                    onClick={()=> setLargeSectionChoiceActive('Shorts')} 
-                    isActive={largeSectionChoiceActive==='Shorts'}              
+                    onClick={()=> setSectionChoiceActivation('Shorts')} 
+                    isActive={sectionChoiceActivation==='Shorts'}              
                     />
                 <SmallSidebarItem 
                     Icon={CalendarPlus2} 
                     title='Subscriptions' 
                     url='/subscriptions'
-                    onClick={()=> setLargeSectionChoiceActive('Subscriptions')} 
-                    isActive={largeSectionChoiceActive==='Subscriptions'}  
+                    onClick={()=> setSectionChoiceActivation('Subscriptions')} 
+                    isActive={sectionChoiceActivation==='Subscriptions'}  
                     />
                 <SmallSidebarItem 
                     Icon={CircleUser} 
                     title='You' 
                     url='/library' 
-                    onClick={()=> setLargeSectionChoiceActive('You')} 
-                    isActive={largeSectionChoiceActive==='You'} 
+                    onClick={()=> setSectionChoiceActivation('You')} 
+                    isActive={sectionChoiceActivation===''} 
                     />
             </aside>
 
@@ -70,18 +71,66 @@ const Sidebar = ({defaultActiveChoice='Home'}) => {
                 </div>
 
                 <LargeSidebarSection>
-                    <LargeSidebarItem Icon={Home} title='Home' url='/' onClick={()=> setLargeSectionChoiceActive('Home')} isActive={largeSectionChoiceActive==='Home'} />
-                    <LargeSidebarItem Icon={Play} title='Shorts' url='/shorts' onClick={()=> setLargeSectionChoiceActive('Shorts')} isActive={largeSectionChoiceActive==='Shorts'} />
+                    <LargeSidebarItem 
+                        Icon={Home} 
+                        title='Home' 
+                        url='/' 
+                        onClick={()=> setSectionChoiceActivation('Home')} 
+                        isActive={sectionChoiceActivation==='Home'} 
+                        />
+                    <LargeSidebarItem 
+                        Icon={Play} 
+                        title='Shorts' 
+                        url='/shorts' 
+                        onClick={()=> setSectionChoiceActivation('Shorts')} 
+                        isActive={sectionChoiceActivation==='Shorts'} 
+                        />
                 </LargeSidebarSection>
                 <hr className="border-t border-zinc-800" />
 
                 <LargeSidebarSection title='You' visibleItemCount={5}>
-                    <LargeSidebarItem Icon={Library} title='Library' url='/library' onClick={()=> setLargeSectionChoiceActive('Library')} isActive={largeSectionChoiceActive==='Library'} />
-                    <LargeSidebarItem Icon={History} title='History' url='/history' onClick={()=> setLargeSectionChoiceActive('History')} isActive={largeSectionChoiceActive==='History'} />
-                    <LargeSidebarItem Icon={PlaySquare} title='Your Videos' url='/your-videos' onClick={()=> setLargeSectionChoiceActive('Your Videos')} isActive={largeSectionChoiceActive==='Your Videos'} />
-                    <LargeSidebarItem Icon={Clock} title='Watch Later' url='/playlist?list=WL' onClick={()=> setLargeSectionChoiceActive('Watch Later')} isActive={largeSectionChoiceActive==='Watch Later'} />
-                    <LargeSidebarItem Icon={ThumbsUp} title='Liked Videos' url='/liked-videos' onClick={()=> setLargeSectionChoiceActive('Liked Videos')} isActive={largeSectionChoiceActive==='Liked Videos'} />
-                    <LargeSidebarItem Icon={ArrowDownToLine} title='Downloads' url='/downloads' onClick={()=> setLargeSectionChoiceActive('Downloads')} isActive={largeSectionChoiceActive==='Downloads'} />
+                    <LargeSidebarItem 
+                        Icon={Library} 
+                        title='Library' 
+                        url='/library' 
+                        onClick={()=> setSectionChoiceActivation('Library')} 
+                        isActive={sectionChoiceActivation==='Library'} 
+                        />
+                    <LargeSidebarItem 
+                        Icon={History} 
+                        title='History' 
+                        url='/history' 
+                        onClick={()=> setSectionChoiceActivation('History')} 
+                        isActive={sectionChoiceActivation==='History'} 
+                        />
+                    <LargeSidebarItem 
+                        Icon={PlaySquare} 
+                        title='Your Videos' 
+                        url='/your-videos' 
+                        onClick={()=> setSectionChoiceActivation('Your Videos')}
+                        isActive={sectionChoiceActivation==='Your Videos'} 
+                        />
+                    <LargeSidebarItem 
+                        Icon={Clock} 
+                        title='Watch Later' 
+                        url='/playlist?list=WL' 
+                        onClick={()=> setSectionChoiceActivation('Watch Later')} 
+                        isActive={sectionChoiceActivation==='Watch Later'} 
+                        />
+                    <LargeSidebarItem 
+                        Icon={ThumbsUp} 
+                        title='Liked Videos' 
+                        url='/liked-videos' 
+                        onClick={()=> setSectionChoiceActivation('Liked Videos')} 
+                        isActive={sectionChoiceActivation==='Liked Videos'} 
+                        />
+                    <LargeSidebarItem 
+                        Icon={ArrowDownToLine} 
+                        title='Downloads' 
+                        url='/downloads' 
+                        onClick={()=> setSectionChoiceActivation('Downloads')} 
+                        isActive={sectionChoiceActivation==='Downloads'} 
+                        />
                 </LargeSidebarSection>
                 <hr className="border-t border-zinc-800" />
 
@@ -90,52 +139,77 @@ const Sidebar = ({defaultActiveChoice='Home'}) => {
                         Icon={Flame}
                         title="Trending"
                         url="/trending"
-                        onClick={()=> setLargeSectionChoiceActive('Trending')} isActive={largeSectionChoiceActive==='Trending'} 
+                        onClick={()=> setSectionChoiceActivation('Trending')} 
+                        isActive={sectionChoiceActivation==='Trending'} 
                     />
                     <LargeSidebarItem
                         Icon={ShoppingBag}
                         title="Shopping"
                         url="/shopping"
-                        onClick={()=> setLargeSectionChoiceActive('Shopping')} isActive={largeSectionChoiceActive==='Shopping'} 
+                        onClick={()=> setSectionChoiceActivation('Shopping')} 
+                        isActive={sectionChoiceActivation==='Shopping'} 
                     />
-                    <LargeSidebarItem Icon={Music2} title="Music" url="/music" onClick={()=> setLargeSectionChoiceActive('Music')} isActive={largeSectionChoiceActive==='Music'} />
+                    <LargeSidebarItem 
+                        Icon={Music2} 
+                        title="Music" 
+                        url="/music" 
+                        onClick={()=> setSectionChoiceActivation('Music')} 
+                        isActive={sectionChoiceActivation==='Music'} 
+                        />
                     <LargeSidebarItem
                         Icon={Film}
                         title="Movies & TV"
                         url="/movies-tv"
-                        onClick={()=> setLargeSectionChoiceActive('Movies & TV')} isActive={largeSectionChoiceActive==='Movies & TV'} 
+                        onClick={()=> setSectionChoiceActivation('Movies & TV')} 
+                        isActive={sectionChoiceActivation==='Movies & TV'} 
                     />
-                    <LargeSidebarItem Icon={Radio} title="Live" url="/live" onClick={()=> setLargeSectionChoiceActive('Live')} isActive={largeSectionChoiceActive==='Live'}  />
+                    <LargeSidebarItem 
+                        Icon={Radio} 
+                        title="Live" 
+                        url="/live" 
+                        onClick={()=> setSectionChoiceActivation('Live')} 
+                        isActive={sectionChoiceActivation==='Live'}  
+                        />
                     <LargeSidebarItem
                         Icon={Gamepad2}
                         title="Gaming"
                         url="/gaming"
-                        onClick={()=> setLargeSectionChoiceActive('Gaming')} isActive={largeSectionChoiceActive==='Gaming'} 
+                        onClick={()=> setSectionChoiceActivation('Gaming')} isActive={sectionChoiceActivation==='Gaming'} 
                     />
-                    <LargeSidebarItem Icon={Newspaper} title="News" url="/news" onClick={()=> setLargeSectionChoiceActive('News')} isActive={largeSectionChoiceActive==='News'}  />
+                    <LargeSidebarItem 
+                        Icon={Newspaper} 
+                        title="News" 
+                        url="/news" 
+                        onClick={()=> setSectionChoiceActivation('News')} 
+                        isActive={sectionChoiceActivation==='News'}  
+                        />
                     <LargeSidebarItem
                         Icon={Trophy}
                         title="Sports"
                         url="/sports"
-                        onClick={()=> setLargeSectionChoiceActive('Sports')} isActive={largeSectionChoiceActive==='Sports'} 
+                        onClick={()=> setSectionChoiceActivation('Sports')} 
+                        isActive={sectionChoiceActivation==='Sports'} 
                     />
                     <LargeSidebarItem
                         Icon={Lightbulb}
                         title="Learning"
                         url="/learning"
-                        onClick={()=> setLargeSectionChoiceActive('Learning')} isActive={largeSectionChoiceActive==='Learning'} 
+                        onClick={()=> setSectionChoiceActivation('Learning')} 
+                        isActive={sectionChoiceActivation==='Learning'} 
                     />
                     <LargeSidebarItem
                         Icon={Shirt}
                         title="Fashion & Beauty"
                         url="/fashion-beauty"
-                        onClick={()=> setLargeSectionChoiceActive('Fashion & Beauty')} isActive={largeSectionChoiceActive==='Fashion & Beauty'} 
+                        onClick={()=> setSectionChoiceActivation('Fashion & Beauty')} 
+                        isActive={sectionChoiceActivation==='Fashion & Beauty'} 
                     />
                     <LargeSidebarItem
                         Icon={Podcast}
                         title="Podcasts"
                         url="/podcasts"
-                        onClick={()=> setLargeSectionChoiceActive('Podcasts')} isActive={largeSectionChoiceActive==='Podcasts'} 
+                        onClick={()=> setSectionChoiceActivation('Podcasts')} 
+                        isActive={sectionChoiceActivation==='Podcasts'} 
                     />
                 </LargeSidebarSection>
 
