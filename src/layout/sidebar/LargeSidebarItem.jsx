@@ -1,12 +1,13 @@
 import { twMerge } from "tailwind-merge";
 import { buttonStyle } from "../../components/buttonStyle";
+import { Link } from "react-router-dom";
 
 function LargeSidebarItem({ Icon, title, url, onClick, isActive = false }) {
     if (!Icon) return null
     return (
-        <a
+        <Link
             onClick={onClick}
-            href={url}
+            to={url}
             className={twMerge(buttonStyle({ variant: 'ghost' }),
                 `w-full flex items-center rounded-lg gap-4 p-3
                 ${isActive ? "font-bold bg-zinc-800 hover:bg-zinc-700"
@@ -23,7 +24,7 @@ function LargeSidebarItem({ Icon, title, url, onClick, isActive = false }) {
             text-ellipsis">
                 {title}
             </div>
-        </a>
+        </Link>
     )
 }
 

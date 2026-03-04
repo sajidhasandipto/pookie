@@ -18,7 +18,11 @@ const Sidebar = () => {
     scrollbar-hidden pb-4 flex-col ml-1 hidden ${isLargeOpen ? 'lg:hidden' : 'lg:flex'
                 }`}>
                 <SmallSidebarItem Icon={Home} title='Home' url='/' />
-                <SmallSidebarItem Icon={Play} title='Shorts' url='/shorts' />
+                <SmallSidebarItem 
+                    Icon={Play}
+                    title='Shorts' 
+                    url='/shorts'              
+                    />
                 <SmallSidebarItem Icon={CalendarPlus2} title='Subscriptions' url='/subscriptions' />
                 <SmallSidebarItem Icon={CircleUser} title='You' url='/library' />
             </aside>
@@ -47,7 +51,7 @@ const Sidebar = () => {
 
                 <LargeSidebarSection>
                     <LargeSidebarItem Icon={Home} title='Home' url='/' onClick={()=> setLargeSectionChoiceActive('Home')} isActive={largeSectionChoiceActive==='Home'} />
-                    <LargeSidebarItem Icon={Play} title='Shorts' url='/pookietube/shorts' onClick={()=> setLargeSectionChoiceActive('Shorts')} isActive={largeSectionChoiceActive==='Shorts'} />
+                    <LargeSidebarItem Icon={Play} title='Shorts' url='/shorts' onClick={()=> setLargeSectionChoiceActive('Shorts')} isActive={largeSectionChoiceActive==='Shorts'} />
                 </LargeSidebarSection>
                 <hr className="border-t border-zinc-800" />
 
