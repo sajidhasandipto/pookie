@@ -6,10 +6,10 @@ import { useSidebarContext } from './SidebarContext'
 import { PageHeaderFirstSection } from "../PageHeader"
 import { useState } from "react"
 
-const Sidebar = () => {
+const Sidebar = ({defaultActiveChoice='Home'}) => {
 
     const { isLargeOpen, isSmallOpen, close } = useSidebarContext()
-    const [ largeSectionChoiceActive, setLargeSectionChoiceActive ] = useState("Home");
+    const [ largeSectionChoiceActive, setLargeSectionChoiceActive ] = useState(defaultActiveChoice);
 
     return (
         <>  

@@ -6,7 +6,7 @@ const ShortsPage = () => {
   return (
     <div>
       <SidebarProvider>
-        <Sidebar/>
+        <Sidebar defaultActiveChoice='Shorts' />
       </SidebarProvider>
     </div>
   )
