@@ -17,14 +17,34 @@ const Sidebar = ({defaultActiveChoice='Home'}) => {
             <aside className={`sticky top-0 overflow-y-auto 
     scrollbar-hidden pb-4 flex-col ml-1 hidden ${isLargeOpen ? 'lg:hidden' : 'lg:flex'
                 }`}>
-                <SmallSidebarItem Icon={Home} title='Home' url='/' />
+                <SmallSidebarItem 
+                    Icon={Home} 
+                    title='Home' 
+                    url='/' 
+                    onClick={()=> setLargeSectionChoiceActive('Home')} 
+                    isActive={largeSectionChoiceActive==='Home'} 
+                    />
                 <SmallSidebarItem 
                     Icon={Play}
                     title='Shorts' 
-                    url='/shorts'              
+                    url='/shorts'
+                    onClick={()=> setLargeSectionChoiceActive('Shorts')} 
+                    isActive={largeSectionChoiceActive==='Shorts'}              
                     />
-                <SmallSidebarItem Icon={CalendarPlus2} title='Subscriptions' url='/subscriptions' />
-                <SmallSidebarItem Icon={CircleUser} title='You' url='/library' />
+                <SmallSidebarItem 
+                    Icon={CalendarPlus2} 
+                    title='Subscriptions' 
+                    url='/subscriptions'
+                    onClick={()=> setLargeSectionChoiceActive('Subscriptions')} 
+                    isActive={largeSectionChoiceActive==='Subscriptions'}  
+                    />
+                <SmallSidebarItem 
+                    Icon={CircleUser} 
+                    title='You' 
+                    url='/library' 
+                    onClick={()=> setLargeSectionChoiceActive('You')} 
+                    isActive={largeSectionChoiceActive==='You'} 
+                    />
             </aside>
 
             {/* when small screen big sidebar is opens up */}
