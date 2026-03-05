@@ -15,6 +15,19 @@ export const buttonStyle = cva(['hover:bg-zinc-700', 'transition-colors'], {
                 'bg-zinc-200',
                 'hover:bg-zinc-400',
                 'text-zinc-800'
+            ],
+            glass: [
+                'bg-white/10',
+                'transition-colors',
+                'hover:bg-white/20'
+            ],
+            ovalwhite: [
+                'bg-white',
+                'text-black',
+                'font-medium',
+                'text-sm',
+                'transition-all',
+                'hover:bg-gray-200'
             ]
         },
         size: {
@@ -28,6 +41,20 @@ export const buttonStyle = cva(['hover:bg-zinc-700', 'transition-colors'], {
                 'justify-center',
                 
             ],
+            glass: [
+                'w-12',
+                'h-12',
+                'flex',
+                'items-center',
+                'justify-center',
+                'rounded-full'
+            ],
+            ovalwhite: [
+                'rounded-full',
+                'px-4',
+                'py-2',
+
+            ]
         }
 
     }
