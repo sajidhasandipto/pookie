@@ -24,6 +24,8 @@
 /* scrollbar */
 @import "tailwindcss";
 
+
+/* Custom scrollbar */
 @utility scrollbar-yt {
   
   &::-webkit-scrollbar {
@@ -52,6 +54,16 @@
   scrollbar-width: thin;
   scrollbar-color: var(--color-gray-500) transparent;
 }
+
+/* scrollbar hide */
+@utility scrollbar-hidden {
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 
 /* svg stroke color */
 svg {

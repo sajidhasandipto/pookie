@@ -1,9 +1,12 @@
 import React from 'react'
 import { ArrowDownFromLineIcon, Forward, MessageSquareText, MoveDown, MoveUp, ThumbsDown, ThumbsUp } from 'lucide-react'
-import test_img from '../../assets/test.png'
 import Button from '../../components/Button'
 
-const ShortsDiv = () => {
+const ShortsDiv = ({ shorts }) => {
+  if (!shorts) return null;
+
+  const videoEmbedUrl = `https://www.youtube.com/embed/${shorts.id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${shorts.id}&rel=0&modestbranding=1`;
+
   return (
     <div className='grid grid-cols-[1fr_min(450px,90vw)_1fr] gap-4 h-[95vh] items-end '>
       {/* tittle and channel name section*/}
@@ -14,7 +17,7 @@ const ShortsDiv = () => {
           {/* profile img */}
           <div className='w-10 h-10 shrink-0' >
             <img
-              src='https://placehold.co/40'
+              src={shorts.channelAvatar}
               alt='channel'
               className='w-full h-full object-cover rounded-full'
             />
@@ -22,7 +25,7 @@ const ShortsDiv = () => {
 
           {/* channel name or handle */}
           <span className='font-semibold text-sm'>
-            @sajidhasandipto
+            {shorts.channelName}
           </span>
 
           {/* subscribe button */}
@@ -36,7 +39,7 @@ const ShortsDiv = () => {
             </Button>
           </div>
           <div>
-            
+
           </div>
 
         </div>
@@ -44,8 +47,7 @@ const ShortsDiv = () => {
         {/* video title */}
         <div className='text-left max-w-112.5'>
           <h3 className='text-base font-medium line-clamp-2 leading-snug'>
-            There’s only one way to beat Barcelona 😮‍💨
-
+            {shorts.title}
           </h3>
         </div>
       </div>
@@ -53,7 +55,19 @@ const ShortsDiv = () => {
       {/* the short video section */}
       <div className='flex flex-row max-h-full mx-auto w-auto aspect-9/16  overflow-hidden bg-transparent gap-0.5'>
         <div className='max-h-full mx-auto w-auto aspect-9/16 rounded-2xl overflow-hidden shadow-2xl shadow-zinc-800'>
-          <img src={test_img} className='w-full h-full object-cover' />
+
+          {/*shorts Video */}
+
+          <iframe
+            width="100%"
+            height="100%"
+            src={videoEmbedUrl}
+            title="Shorts video player"
+            
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className='pointer-events-none object-cover scale-125' 
+          ></iframe>
         </div>
 
 
@@ -68,7 +82,7 @@ const ShortsDiv = () => {
               <ThumbsUp />
             </Button>
             <span className='text-xs text-white font-medium'>
-              Like
+              {shorts.likes}
             </span>
           </div>
 
@@ -116,13 +130,13 @@ const ShortsDiv = () => {
       {/* down and up buttons for scrolling */}
       <div className='flex flex-col gap-4 items-end my-auto'>
         {/* up button */}
-        <div> 
+        <div>
           <Button
             variant='glass'
             size='glass'
             className='w-15 h-15'
           >
-            <MoveUp/>
+            <MoveUp />
           </Button>
         </div>
 
