@@ -1,11 +1,13 @@
-import React from 'react'
-import { ArrowDownFromLineIcon, Forward, MessageSquareText, MoveDown, MoveUp, ThumbsDown, ThumbsUp } from 'lucide-react'
+import React, { useState } from 'react'
+import { ArrowDownFromLineIcon, Forward, MessageSquareText, MoveDown, MoveUp, ThumbsDown, ThumbsUp, Volume2, VolumeX } from 'lucide-react'
 import Button from '../../components/Button'
 
 const ShortsDiv = ({ shorts }) => {
+  const [notMute, setNotMute] = useState(false);
+
   if (!shorts) return null;
 
-  const videoEmbedUrl = `https://www.youtube.com/embed/${shorts.id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${shorts.id}&rel=0&modestbranding=1`;
+  const videoEmbedUrl = `https://www.youtube.com/embed/${shorts.id}?autoplay=1&mute=${notMute ? '0' : '1'}&controls=0&loop=1&playlist=${shorts.id}&rel=0&modestbranding=1`;
 
   return (
     <div className='grid grid-cols-[1fr_min(450px,90vw)_1fr] gap-4 h-[95vh] items-end '>
@@ -54,7 +56,19 @@ const ShortsDiv = ({ shorts }) => {
 
       {/* the short video section */}
       <div className='flex flex-row max-h-full mx-auto w-auto aspect-9/16  overflow-hidden bg-transparent gap-0.5'>
-        <div className='max-h-full mx-auto w-auto aspect-9/16 rounded-2xl overflow-hidden shadow-2xl shadow-zinc-800'>
+        <div className='relative max-h-full mx-auto w-auto aspect-9/16 rounded-2xl overflow-hidden shadow-2xl shadow-zinc-800'>
+          
+          <div className='absolute z-999 right-0'
+          onClick={() => {setNotMute((notMute)=> !notMute)}}>
+            <Button
+              variant='glass'
+              size='glass'
+            >
+              {
+                notMute ? <Volume2/> : <VolumeX/>
+              }
+            </Button>
+          </div>
 
           {/*shorts Video */}
 

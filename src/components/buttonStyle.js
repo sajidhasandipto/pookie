@@ -21,6 +21,9 @@ export const buttonStyle = cva(['hover:bg-zinc-700', 'transition-colors'], {
                 'transition-colors',
                 'hover:bg-white/20'
             ],
+            glassTrans: [
+                'bg-blue-300'
+            ],
             ovalwhite: [
                 'bg-white',
                 'text-black',
