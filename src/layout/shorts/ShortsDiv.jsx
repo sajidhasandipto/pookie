@@ -10,23 +10,30 @@ const ShortsDiv = ({ shorts }) => {
   const videoEmbedUrl = `https://www.youtube.com/embed/${shorts.id}?autoplay=1&mute=${notMute ? '0' : '1'}&controls=0&loop=1&playlist=${shorts.id}&rel=0&modestbranding=1`;
 
   return (
-    <div className='grid grid-cols-[1fr_min(450px,90vw)_1fr] gap-4 h-[95vh] items-end '>
+    <div className='relative md:grid grid-cols-[1fr_min(450px,90vw)_1fr] gap-4 h-[95vh] items-end '>
       {/* tittle and channel name section*/}
-      <div className='flex  flex-col items-start gap-3 pb-6 text-white'>
+      <div className='absolute bottom-0 left-4 z-10
+        flex flex-col 
+        items-start gap-3 pb-6 text-white
+        md:static md:pb-6 md:z-0'>
         {/* channel info row */}
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2
+        bg-black/20 md:bg-transparent
+          p-2 rounded-lg backdrop-blur-sm
+          md:backdrop-blur-none'>
 
           {/* profile img */}
-          <div className='w-10 h-10 shrink-0' >
+          <div className='w-9 h-9 md:w-10 md:h-10 shrink-0' >
             <img
               src={shorts.channelAvatar}
               alt='channel'
-              className='w-full h-full object-cover rounded-full'
+              className='w-full h-full object-cover rounded-full border border-white/20'
             />
           </div>
 
           {/* channel name or handle */}
-          <span className='font-semibold text-sm'>
+          <span className='font-semibold text-sm
+          drop-shadow-md'>
             {shorts.channelName}
           </span>
 
@@ -47,25 +54,27 @@ const ShortsDiv = ({ shorts }) => {
         </div>
 
         {/* video title */}
-        <div className='text-left max-w-112.5'>
-          <h3 className='text-base font-medium line-clamp-2 leading-snug'>
+        <div className='max-w-112.5 md:max-w-xs'>
+          <h3 className='text-sm md:text-base font-medium 
+          line-clamp-2 leading-snug drop-shadow-md'>
             {shorts.title}
           </h3>
         </div>
       </div>
 
       {/* the short video section */}
-      <div className='flex flex-row max-h-full mx-auto w-auto aspect-9/16  overflow-hidden bg-transparent gap-0.5'>
-        <div className='relative max-h-full mx-auto w-auto aspect-9/16 rounded-2xl overflow-hidden shadow-2xl shadow-zinc-800'>
-          
-          <div className='absolute z-999 right-0'
-          onClick={() => {setNotMute((notMute)=> !notMute)}}>
+      <div className='relative w-full h-full flex justify-center'>
+        <div className='relative h-full aspect-9/16 rounded-2xl 
+        overflow-hidden shadow-2xl shadow-zinc-800'>
+
+          <div className='absolute z-20 top-4 right-4'
+            onClick={() => { setNotMute((notMute) => !notMute) }}>
             <Button
               variant='glass'
               size='glass'
             >
               {
-                notMute ? <Volume2/> : <VolumeX/>
+                notMute ? <Volume2 /> : <VolumeX />
               }
             </Button>
           </div>
@@ -77,16 +86,20 @@ const ShortsDiv = ({ shorts }) => {
             height="100%"
             src={videoEmbedUrl}
             title="Shorts video player"
-            
+
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className='pointer-events-none object-cover scale-125' 
+            className='pointer-events-none object-cover scale-[1.01]'
           ></iframe>
         </div>
 
 
         {/* buttons for the engagement */}
-        <div className='flex flex-col justify-end gap-2 pb-5'>
+        <div className=' absolute right-2 bottom-20
+        z-10
+        flex flex-col gap-4 items-center 
+        md:justify-end 
+        md:pb-5 md:my-auto md:items-end'>
           {/* Like Button */}
           <div className='flex flex-col items-center gap-1'>
             <Button
@@ -95,7 +108,7 @@ const ShortsDiv = ({ shorts }) => {
             >
               <ThumbsUp />
             </Button>
-            <span className='text-xs text-white font-medium'>
+            <span className='text-[10px] md:text-xs text-white font-medium drop-shadow-md'>
               {shorts.likes}
             </span>
           </div>
@@ -142,7 +155,8 @@ const ShortsDiv = ({ shorts }) => {
       </div>
 
       {/* down and up buttons for scrolling */}
-      <div className='flex flex-col gap-4 items-end my-auto'>
+      <div className='hidden md:flex flex-col gap-4 
+      items-end my-auto'>
         {/* up button */}
         <div>
           <Button
