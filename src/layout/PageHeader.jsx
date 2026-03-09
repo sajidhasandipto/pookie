@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Button from '../components/Button'
 import { Bell, ArrowLeft, Menu, Mic, Search, Upload, User, Plus } from 'lucide-react'
 import logo from '../assets/logo.png'
+import { Link } from 'react-router-dom'
 import { useSidebarContext } from './sidebar/SidebarContext'
 
 const PageHeader = () => {
@@ -122,9 +123,9 @@ export function PageHeaderFirstSection({ showFullSearchBar=false }) {
       </Button>
 
       {/* logo img */}
-      <a href='/'>
+      <Link to='/'>
         <img src={logo} className='h-6 mt-2 ml-2' />
-      </a>
+      </Link>
 
     </div>
   )
